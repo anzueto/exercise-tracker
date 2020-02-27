@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json()); // allow us to parse json
 
 const uri = process.env.MONGODB_URI;
-mongoose.connect(uri,
+mongoose.connect(uri || 'mongodb://localhost/mern-excercise-tracker',
     {
         useNewUrlParser: true,
         useCreateIndex: true
