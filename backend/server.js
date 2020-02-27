@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose'); //connect to database mongodb atlas
+const path = require('path');
 
 require('dotenv').config();
 
@@ -28,6 +29,14 @@ const usersRouter = require('./routes/users');
 
 app.use('/exercises', exercisesRouter); // loads excersices router
 app.use('/users', usersRouter); // loads user router
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('../build'));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'build')); // relative path
+    });
+}
 
 // starting the server
 app.listen(port, () => {
