@@ -12,7 +12,7 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json()); // allow us to parse json
 
-const uri = process.env.MONGODB_URI;
+const uri = process.env.ATLAS_URI;
 mongoose.connect(uri || 'mongodb://localhost/mern-excercise-tracker',
     {
         useNewUrlParser: true,
