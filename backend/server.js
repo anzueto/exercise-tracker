@@ -15,6 +15,7 @@ app.use(express.json()); // allow us to parse json
 const uri = process.env.MONGODB_URI;
 mongoose.connect('mongodb+srv://admin:admin@cluster0-8idbz.gcp.mongodb.net/test?retryWrites=true&w=majority',
     {
+        useUnifiedTopology: true,
         useNewUrlParser: true,
         useCreateIndex: true
     });
