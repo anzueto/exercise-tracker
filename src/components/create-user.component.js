@@ -34,7 +34,7 @@ export default class CreateUser extends Component {
 
         // eslint-disable-next-line
         {/* send user data to backend */ }
-        axios.post('http://localhost:5000/users/add', newUser)
+        axios.post('https://an-exercise-tracker-backend.herokuapp.com/users/add', newUser)
             .then(res => console.log(res.data));
 
         alert(this.state.username + 'has been added');

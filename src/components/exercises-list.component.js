@@ -32,7 +32,7 @@ export default class ExercisesList extends Component {
         // eslint-disable-next-line
         {/* get list of exercises from database */ }
 
-        axios.get('http://localhost:5000/exercises/')
+        axios.get('https://an-exercise-tracker-backend.herokuapp.com/exercises/')
             .then(response => {
                 this.setState({ exercises: response.data });
             })
@@ -42,7 +42,7 @@ export default class ExercisesList extends Component {
     }
 
     deleteExercise(id) {
-        axios.delete('http://localhost:5000/exercises/' + id)
+        axios.delete('https://an-exercise-tracker-backend.herokuapp.com/exercises/' + id)
             .then(res => console.log(res.data));
 
         this.setState({
