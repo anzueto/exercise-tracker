@@ -35,7 +35,7 @@ export default class EditExercise extends Component {
 
 
     componentDidMount() {
-        axios.get(`${baseUrl}/exercises` + this.props.match.params.id)
+        axios.get(`${baseUrl}/exercises/` + this.props.match.params.id)
             .then(response => {
                 this.setState({
                     username: response.data.username,
@@ -98,7 +98,7 @@ export default class EditExercise extends Component {
 
         // eslint-disable-next-line
         {/* send user data to backend */ }
-        axios.post(`${baseUrl}/exercises/update` + this.props.match.params.id, exercise)
+        axios.post(`${baseUrl}/exercises/update/` + this.props.match.params.id, exercise)
             .then(res => console.log(res.data));
 
         // eslint-disable-next-line
