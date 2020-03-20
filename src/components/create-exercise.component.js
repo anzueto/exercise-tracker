@@ -81,7 +81,7 @@ export default class CreateExercise extends Component {
 
         // eslint-disable-next-line
         {/* send user data to backend */ }
-        axios.post(`${baseUrl}/add`, exercise)
+        axios.post(`${baseUrl}/exercises/add`, exercise)
             .then(res => console.log(res.data));
 
         // eslint-disable-next-line
