@@ -3,6 +3,12 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
+// for heroku to pull from the backend
+let baseUrl = "http://localhost:5000";
+if (process.env.NODE_ENV !== "development") {
+    baseUrl = "https://exercise-tracker-backend-ja.herokuapp.com";
+}
+
 export default class CreateExercise extends Component {
     constructor(props) {
         super(props);
@@ -28,7 +34,7 @@ export default class CreateExercise extends Component {
 
 
     componentDidMount() {
-        axios.get('https://an-exercise-tracker-backend.herokuapp.com/users/')
+        axios.get(`${baseUrl}/users`)
             .then(response => {
                 if (response.data.length > 0) {
                     this.setState({
@@ -75,7 +81,7 @@ export default class CreateExercise extends Component {
 
         // eslint-disable-next-line
         {/* send user data to backend */ }
-        axios.post('https://an-exercise-tracker-backend.herokuapp.com/add', exercise)
+        axios.post(`${baseUrl}/addd`, exercise)
             .then(res => console.log(res.data));
 
         // eslint-disable-next-line

@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+// for heroku to pull from the backend
+let baseUrl = "http://localhost:5000";
+if (process.env.NODE_ENV !== "development") {
+    baseUrl = "https://exercise-tracker-backend-ja.herokuapp.com";
+}
+
+
 export default class CreateUser extends Component {
     constructor(props) {
         super(props);
@@ -34,7 +41,7 @@ export default class CreateUser extends Component {
 
         // eslint-disable-next-line
         {/* send user data to backend */ }
-        axios.post('https://an-exercise-tracker-backend.herokuapp.com/users/add', newUser)
+        axios.post(`${baseUrl}/users/add`, newUser)
             .then(res => console.log(res.data));
 
         alert(this.state.username + 'has been added');

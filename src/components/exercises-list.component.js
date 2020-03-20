@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+
+// for heroku to pull from the backend
+let baseUrl = "http://localhost:5000";
+if (process.env.NODE_ENV !== "development") {
+    baseUrl = "https://exercise-tracker-backend-ja.herokuapp.com";
+}
+
+
 // eslint-disable-next-line
 {/* implementation as functional react component */ }
 const Exercise = props => (
@@ -32,7 +40,7 @@ export default class ExercisesList extends Component {
         // eslint-disable-next-line
         {/* get list of exercises from database */ }
 
-        axios.get('https://an-exercise-tracker-backend.herokuapp.com/exercises/')
+        axios.get(`${baseUrl}/exercises`)
             .then(response => {
                 this.setState({ exercises: response.data });
             })
@@ -42,7 +50,7 @@ export default class ExercisesList extends Component {
     }
 
     deleteExercise(id) {
-        axios.delete('https://an-exercise-tracker-backend.herokuapp.com/exercises/' + id)
+        axios.delete(`${baseUrl}/exercises/` + id)
             .then(res => console.log(res.data));
 
         this.setState({
